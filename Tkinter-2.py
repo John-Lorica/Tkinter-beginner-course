@@ -16,4 +16,7 @@ class MyGUI:
         self.textbox = tk.Text(self.root, height=5, font=("Arial", 16))
         self.textbox.pack(padx=10, pady=10)
 
+        self.check = tk.Checkbutton(
+            self.root, text="Show Messagebox", font=("Arial", 16))
+
         self.root.mainloop()
