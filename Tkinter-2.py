@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 
 
 class MyGUI:
@@ -29,7 +30,10 @@ class MyGUI:
         self.root.mainloop()
 
     def show_message(self):
-        print("Hello World!")
+        if self.check_state.get() == 0:
+            print(self.textbox.get('1.0', tk.END))
+        else:
+            pass
 
 
 MyGUI()
