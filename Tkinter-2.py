@@ -8,10 +8,9 @@ class MyGUI:
 
         self.root = tk.Tk()
 
-        self.label = tk.Label()
-
         self.label = tk.Label(
             self.root, text="Your Message", font=('Arial', 18))
+        self.textbox.bind("<KeyPress>", self.shortcut)
         self.label.pack(padx=10, pady=10)
 
         self.textbox = tk.Text(self.root, height=5, font=("Arial", 16))
@@ -33,7 +32,11 @@ class MyGUI:
         if self.check_state.get() == 0:
             print(self.textbox.get('1.0', tk.END))
         else:
-            pass
+            messagebox.showinfo(
+                title="Message", message=self.textbox.get('1.0', tk.END))
+
+    def shortcut(self, event):
+        pass
 
 
 MyGUI()
