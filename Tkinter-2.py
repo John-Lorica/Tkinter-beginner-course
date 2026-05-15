@@ -26,6 +26,7 @@ class MyGUI:
             self.root, text="Show Message", font=('Arial', 18), command=self.show_message)
         self.button.pack(padx=10, pady=10)
 
+        self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
         self.root.mainloop()
 
     def show_message(self):
@@ -36,8 +37,12 @@ class MyGUI:
                 title="Message", message=self.textbox.get('1.0', tk.END))
 
     def shortcut(self, event):
-        print(event.keysym)
-        print(event.state)
+        if event.state == 4 and event.keysym == "Return":
+            self.show_message()
+
+    def on_closing(self):
+        if messagebox.askyesno(title="Quit?", message="Do you really want to quit?"):
+            self.root.destroy()
 
 
 MyGUI()
